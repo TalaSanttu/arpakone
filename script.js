@@ -74,6 +74,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('spin').addEventListener('click', spin);
+    
+    // Lisää uusi vaihtoehto
+    document.getElementById('addOptionBtn').addEventListener('click', function() {
+        const newOptionInput = document.getElementById('newOption');
+        const newOptionValue = newOptionInput.value.trim();
+        if (newOptionValue !== '') {
+            options.push(newOptionValue);
+            colors.push('#' + Math.floor(Math.random()*16777215).toString(16)); // Lisää satunnainen väri
+            newOptionInput.value = ''; // Tyhjennä syöte kenttä
+            drawWheel(); // Piirrä uudelleen pyörä päivitettyjen vaihtoehtojen kanssa
+        }
+    });
+    
+    // Poista kaikki vaihtoehdot
+    document.getElementById('removeAllOptionsBtn').addEventListener('click', function() {
+        options.length = 0; // Tyhjennä vaihtoehtojen taulukko
+        colors.length = 0; // Tyhjennä värien taulukko
+        drawWheel(); // Piirrä pyörä ilman vaihtoehtoja
+    });
 
     drawWheel();
 });
