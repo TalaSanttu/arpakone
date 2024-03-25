@@ -44,8 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function spin() {
+        const minSpinTime = 3000; // Minimipyöritysaika
+        const maxSpinTime = 6000; // Maksimipyöritysaika
+
         spinAngleStart = Math.random() * 10 + 10; // Asetetaan satunnainen pyörimiskulma
-        const spinTimeTotal = Math.random() * 3000 + 2000; // Asetetaan satunnainen pyörimisaika
+        const spinTimeTotal = Math.random() * (maxSpinTime - minSpinTime) + minSpinTime; // Asetetaan satunnainen pyörimisaika
 
         function rotateWheel() {
             const spinAngle = spinAngleStart - easeOut((Date.now() - spinTimeStart), 0, spinAngleStart, spinTimeTotal);
